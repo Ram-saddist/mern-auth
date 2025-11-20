@@ -3,6 +3,7 @@ const app= express()
 const cors=require("cors")
 const mongoose =require("mongoose")
 const authRoutes= require("./routes/auth.js")
+const dashboardRoutes=require("./routes/dashboard.js")
 require("dotenv").config()
 
 
@@ -19,5 +20,6 @@ mongoose.connect(process.env.MONGODB_URL)
     })
 app.get("/",(req,res)=> res.json({"message":"working successful"}))
 app.use("/api",authRoutes)
+app.use("/api",dashboardRoutes)
 
 app.listen(process.env.PORT,()=>console.log("Started server"))
