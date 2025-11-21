@@ -4,6 +4,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
+import ProtectedRoute from './components/ProtectedRoute'
 export default function App() {
   return (
     <div>
@@ -12,7 +13,11 @@ export default function App() {
         <Routes>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard/>
+            </ProtectedRoute>
+            }/>
         </Routes>
       </BrowserRouter>
     </div>
